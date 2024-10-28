@@ -1,19 +1,22 @@
 #!/bin/bash
-git clone https://github.com/tymek-3/nvim-config ~/dotfiles/nvim
+if [ ! -e ~/dotfiles/nvim ]; then
+	git clone https://github.com/tymek-3/nvim-config ~/dotfiles/nvim
+else
+	git -C ~/dotfiles/nvim pull
+fi
 
-ln -sf ~/dotfiles/.zshrc ~/.zshrc
-ln -sf ~/dotfiles/.tmux.conf ~/.tmux.conf
-ln -sf ~/dotfiles/.ideavimrc ~/.ideavimrc
-ln -sf ~/dotfiles/.gitconfig ~/.gitconfig
+dotfiles=( .zshrc .tmux.conf .ideavimrc .gitconfig )
+for file in ${directories[@]}; do
+	ln -sf ~/dotfiles/${file} ~/${file}
+done
 
-unlink ~/.config/nvim
-ln -s ~/dotfiles/nvim  ~/.config/nvim
+directories=( nvim i3 i3status kitty )
+for dir in ${directories[@]}; do
+	if [ -L ~/.config/${dir} ]; then
+		unlink ~/.config/${dir}
+	else
+		mv ~/.config/${dir} ~/.config/!old.${dir}
+	fi
 
-unlink ~/.config/i3
-ln -s ~/dotfiles/i3  ~/.config/i3
-
-unlink ~/.config/i3status
-ln -s ~/dotfiles/i3status  ~/.config/i3status
-
-unlink ~/.config/kitty
-ln -s ~/dotfiles/kitty  ~/.config/kitty
+	ln -s ~/dotfiles/${dir}  ~/.config/${dir}
+done
