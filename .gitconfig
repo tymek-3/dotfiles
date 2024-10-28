@@ -1,0 +1,7 @@
+[credential]
+	helper = store
+[user]
+	name = tymek-3
+	email = tymekg3@gmail.com
+[init]
+	defaultBranch = master
