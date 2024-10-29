@@ -14,7 +14,7 @@ directories=( nvim i3 i3status kitty )
 for dir in ${directories[@]}; do
 	if [ -L ~/.config/${dir} ]; then
 		unlink ~/.config/${dir}
-	else
+    elif [ -d ~/.config/${dir} ]; then
 		mv ~/.config/${dir} ~/.config/!old.${dir}
 	fi
 
