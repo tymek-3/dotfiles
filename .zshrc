@@ -93,15 +93,16 @@ alias downloads="cd ~/Downloads"
 alias ranger=". ranger"
 alias goodshit="n /mnt/HDD2/dobre\ gowno/torrent"
 alias config="cd ~/.config"
-alias nvc="cd ~/.config/nvim"
+alias nvc="nv ~/.config/nvim"
 alias copy="xclip -sel clip"
 alias dualmonitor="xrandr --output DVI-D-0 --primary --mode 1920x1200 --pos 0x0 --output HDMI-0 --mode 1920x1080 --pos 1920x120"
 alias rightmonitor="xrandr --output DVI-D-0 --off --output HDMI-0 --auto"
 alias leftmonitor="xrandr --output HDMI-0 --off --output DVI-D-0 --auto"
-alias updatediscord="downloads && sudo apt install -y ./discord*.deb && rm ./discord*.deb"
 alias updateosu="chmod +x ~/Apps/osu.AppImage"
-alias printcolors="~/Downloads/print256colours.sh"
 alias dslnaddall="dotnet sln add ./**/*.csproj"
+alias dotfiles="cd ~/dotfiles"
+alias ndotfiles="nv ~/dotfiles"
+
 
 # ncdu
 
