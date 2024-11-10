@@ -5,9 +5,11 @@ else
 	git -C ~/dotfiles/nvim pull
 fi
 
+echo "got here"
 dotfiles=( .zshrc .tmux.conf .ideavimrc .gitconfig )
-for file in ${directories[@]}; do
+for file in ${dotfiles[@]}; do
 	ln -sf ~/dotfiles/${file} ~/${file}
+	echo "${file} linked"
 done
 
 directories=( nvim i3 i3status kitty )
