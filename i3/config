@@ -189,12 +189,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+floating_maximum_size 1336 x 720
+
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
     status_command i3status
 	position top
-    tray_output DVI-D-0
 }
 
 # exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -211,7 +212,7 @@ exec_always xset r rate 200
 exec xrandr --output HDMI-0 --off --output DVI-D-0 --auto;
 
 exec --no-startup-id cilpit
-exec --no-startup-id udiskie
+exec --no-startup-id udiskie --tray &
 
 exec --no-startup-id /usr/lib/gsd-xsettings
 
@@ -219,7 +220,7 @@ set $mouse 'E-Signal USB Gaming Mouse'
 exec_always xinput set-prop $mouse 'libinput Accel Speed' 0.6 
 exec_always xinput set-prop $mouse 'libinput Accel Profile Enabled' 0, 1
 
-exec_always redshift -P -O 4000
+exec_always redshift -P -O 3500
 
 exec_always ~/.fehbg &
 

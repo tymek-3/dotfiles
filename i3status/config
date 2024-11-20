@@ -18,7 +18,7 @@ general {
 # order += "ipv6"
 order += "disk /"
 order += "disk /home"
-order += "ethernet eno1"
+order += "wireless wlp5s0"
 order += "path_exists VPN"
 order += "cpu_temperature 0"
 # order += "cpu_temperature 1"
