@@ -211,7 +211,7 @@ exec_always xset r rate 200
 exec xrandr --output HDMI-0 --off --output DVI-D-0 --auto;
 
 exec --no-startup-id cilpit
-exec --no-startup-id udiskie
+exec --no-startup-id udiskie --tray
 
 exec --no-startup-id /usr/lib/gsd-xsettings
 

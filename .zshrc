@@ -102,6 +102,7 @@ alias updateosu="chmod +x ~/Apps/osu.AppImage"
 alias dslnaddall="dotnet sln add ./**/*.csproj"
 alias dotfiles="cd ~/dotfiles"
 alias ndotfiles="nv ~/dotfiles"
+alias lg=lazygit
 
 
 # ncdu
