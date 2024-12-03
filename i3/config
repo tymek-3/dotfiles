@@ -220,7 +220,7 @@ set $mouse 'E-Signal USB Gaming Mouse'
 exec_always xinput set-prop $mouse 'libinput Accel Speed' 0.6 
 exec_always xinput set-prop $mouse 'libinput Accel Profile Enabled' 0, 1
 
-exec_always redshift -P -O 3500
+exec_always redshift -P -O 4000
 
 exec_always ~/.fehbg &
 
