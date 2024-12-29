@@ -91,7 +91,7 @@ alias nv=nvim
 alias workspace="cd ~/workspace"
 alias downloads="cd ~/Downloads"
 alias ranger=". ranger"
-alias goodshit="n /mnt/HDD2/dobre\ gowno/torrent"
+alias goodshit="n /mnt/HDD2/dobre\ gowno/torrent -T t"
 alias config="cd ~/.config"
 alias nvc="nv ~/.config/nvim"
 alias copy="xclip -sel clip"
@@ -101,8 +101,10 @@ alias leftmonitor="xrandr --output HDMI-0 --off --output DVI-D-0 --auto"
 alias updateosu="chmod +x ~/Apps/osu.AppImage"
 alias dslnaddall="dotnet sln add ./**/*.csproj"
 alias dotfiles="cd ~/dotfiles"
+alias keymaps="cd ~/qmk_firmware/keyboards/cheapino/keymaps"
 alias ndotfiles="nv ~/dotfiles"
 alias lg=lazygit
+alias suzumiya="n /mnt/HDD2/dobre\ gowno/series/the\ melancholy\ of\ haruhi\ suzumiya"
 
 
 # ncdu
