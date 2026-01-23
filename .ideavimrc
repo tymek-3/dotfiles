@@ -18,6 +18,12 @@ map Q gq
 " leader
 let mapleader = " "
 
+nmap <leader>y "+y
+vmap <leader>y "+y
+
+nmap <leader>Y "+Y
+vmap <leader>Y "+Y
+
 imap <C-k> <Action>(EditorUp)
 imap <C-j> <Action>(EditorDown)
 
@@ -37,7 +43,7 @@ nmap <C-l> <Action>(GotoHarpoon4)
 imap <C-v> <Action>(EditorPaste)
 
 " file explorer
-nmap <leader>pv <Action>(ActivateProjectToolWindow)
+nmap <leader>fe <Action>(ActivateProjectToolWindow)
 
 " --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
 
@@ -45,6 +51,8 @@ nmap <leader>pv <Action>(ActivateProjectToolWindow)
 Plug 'machakann/vim-highlightedyank'
 " Commentary plugin
 Plug 'tpope/vim-commentary'
+" Change surround 'cs{(' - { target ( replace with
+Plug 'tpope/vim-surround'
 
 
 "" -- Map IDE actions to IdeaVim -- https://jb.gg/abva4t

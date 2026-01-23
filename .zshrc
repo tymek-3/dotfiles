@@ -66,25 +66,22 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git golang)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/tymek/.dotnet:/home/tymek/.dotnet/tools:/usr/local/go/bin:$PATH
 
 export DOTNET_ROOT=$HOME/.dotnet
 export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
-
-export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/tymek/.dotnet:/home/tymek/.dotnet/tools:/usr/local/go/bin
-. "$HOME/.cargo/env"
 
 export PATH=$PATH:$(go env GOPATH)/bin
 
 export PATH=$PATH:/home/tymek/.local/bin
 
 export EDITOR=nvim
-export VISUAL=nvim
 
 alias cls=clear
 alias nv=nvim
@@ -98,18 +95,22 @@ alias copy="xclip -sel clip"
 alias dualmonitor="xrandr --output DVI-D-0 --primary --mode 1920x1200 --pos 0x0 --output HDMI-0 --mode 1920x1080 --pos 1920x120"
 alias rightmonitor="xrandr --output DVI-D-0 --off --output HDMI-0 --auto"
 alias leftmonitor="xrandr --output HDMI-0 --off --output DVI-D-0 --auto"
-alias updateosu="chmod +x ~/Apps/osu.AppImage"
 alias dslnaddall="dotnet sln add ./**/*.csproj"
 alias dotfiles="cd ~/dotfiles"
 alias keymaps="cd ~/qmk_firmware/keyboards/cheapino/keymaps"
 alias ndotfiles="nv ~/dotfiles"
 alias lg=lazygit
-alias suzumiya="n /mnt/HDD2/dobre\ gowno/series/the\ melancholy\ of\ haruhi\ suzumiya"
+alias open=xdg-open
+alias cds="cd_to_dir"
 
-
-# ncdu
-
-# wrappers for nnn and yazi
+export NNN_OPTS="H" # 'H' shows the hidden files. Same as option -H (so 'nnn -deH')
+export LC_COLLATE="C" # hidden files on top
+export NNN_FIFO="/tmp/nnn.fifo" # temporary buffer for the previews
+# export NNN_FCOLORS="AAAAE631BBBBCCCCDDDD9999" # feel free to change the colors
+export NNN_PLUG='p:preview-tui' # many other plugins are available here: https://github.com/jarun/nnn/tree/master/plugins
+export NNN_TERMINAL=kitty
+export TMPDIR="/tmp/"
+# wrappers for nnn
 n ()
 {
     # Block nesting of nnn in subshells
@@ -133,7 +134,7 @@ n ()
 
     # The command builtin allows one to alias nnn to n, if desired, without
     # making an infinitely recursive alias
-    command nnn -e "$@"
+    command nnn -e -P p "$@"
 
     [ ! -f "$NNN_TMPFILE" ] || {
         . "$NNN_TMPFILE"
@@ -141,15 +142,19 @@ n ()
     }
 }
 
-function yy() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	yazi "$@" --cwd-file="$tmp"
-	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		cd -- "$cwd"
-	fi
-	rm -f -- "$tmp"
+cd_to_dir() {
+    local selected_dir
+    selected_dir=$(fd -t d . "$1" | fzf +m --height 50% --preview 'tree -C {}')
+    if [[ -n "$selected_dir" ]]; then
+        # Change to the selected directory
+        cd "$selected_dir" || return 1
+    fi
 }
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 source <(fzf --zsh)
 
+
+# opencode
+export PATH=/home/tymek/.opencode/bin:$PATH
