@@ -234,6 +234,6 @@ exec_always xinput set-prop $mouse 'libinput Accel Profile Enabled' 0, 1
 
 exec_always redshift -P -O 3700
 
-exec_always ~/.fehbg &
+exec feh --bg-fill ~/.config/i3/BDfJAN.png
 
 exec_always picom -f
