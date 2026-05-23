@@ -32,6 +32,9 @@ zstyle ':omz:update' mode auto      # update automatically without asking
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
+# eval "$(dircolors -b ~/.dircolors)"
+export LS_COLORS="$LS_COLORS:di=1;34:ow=1;34"
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
